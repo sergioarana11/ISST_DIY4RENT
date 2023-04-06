@@ -11,8 +11,8 @@ class App extends Component {
         <Router>
           <Switch>
             <Route path='/' exact={true} component={Home}/>
-            <Route path='/tfgs' exact={true} component={TFGList}/>
-            <Route path='/tfgs/:email' component={TFGEdit}/>
+            <Route path='/usuarios' exact={true} component={HERRAMIENTAList}/>
+            <Route path='/tfgs/:herramienta' component={GESTIONARHERRAMIENTA}/>
           </Switch>
         </Router>
     )
