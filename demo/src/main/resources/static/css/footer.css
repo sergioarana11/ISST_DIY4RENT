@@ -1,0 +1,37 @@
+footer {
+  width: 100%;
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.container {
+  background-color: #f90303; /* color de fondo del footer */
+  padding-top: 20px; /* espacio superior del footer */
+  padding-bottom: 20px; /* espacio inferior del footer */
+  text-align: center; /* centrar el contenido del footer */
+}
+
+ul {
+  list-style: none; /* quitar viñetas de la lista */
+  padding: 0;
+  margin: 0;
+}
+
+.list-inline-item {
+  display: inline-block;
+  margin-right: 30px; /* ajustar el margen derecho para separar los elementos */
+  vertical-align: middle; /* alinear verticalmente los elementos */
+}
+
+.list-inline-item img {
+  border-radius: 50%; /* dar un borde redondeado a las imágenes */
+}
+
+p {
+  margin: 0;
+  font-size: 1.2em; /* ajustar el tamaño de fuente */
+  color: #666; /* color de texto */
+}
