@@ -14,7 +14,7 @@ import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.binary.Hex;
 
 @Entity
-@Table (name = "herramientas")
+@Table(name = "herramientas")
 public class Herramientas {
     @Id
     private String uuid;
@@ -29,9 +29,9 @@ public class Herramientas {
     @Column(name = "timestamp")
     private String timestamp;
     @Column(name = "category")
-    private String category; 
+    private String category;
     @Column(name = "location")
-    private String location; 
+    private String location;
     @Column(name = "charge_info")
     private String charge_info;
 
@@ -39,10 +39,11 @@ public class Herramientas {
         // empty constructor body
     }
 
-    public Herramientas(String title, String description, float price, byte[] photo, String category, String location, String charge_info){
+    public Herramientas(String title, String description, float price, byte[] photo, String category, String location,
+            String charge_info) {
         this.uuid = UUID.randomUUID().toString();
         this.title = title;
-        this. description = description;
+        this.description = description;
         this.price = price;
         this.photo = photo;
         LocalDateTime now = LocalDateTime.now();
@@ -91,7 +92,8 @@ public class Herramientas {
         // Assume imageData is a String containing the hex representation of the image
         String base64String = null;
         try {
-            byte[] binaryBytes = jakarta.xml.bind.DatatypeConverter.parseHexBinary(jakarta.xml.bind.DatatypeConverter.printHexBinary(photo));
+            byte[] binaryBytes = jakarta.xml.bind.DatatypeConverter
+                    .parseHexBinary(jakarta.xml.bind.DatatypeConverter.printHexBinary(photo));
             base64String = Base64.encodeBase64String(binaryBytes);
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
@@ -134,5 +136,5 @@ public class Herramientas {
     public void setCharge_info(String charge_info) {
         this.charge_info = charge_info;
     }
-}
 
+}
