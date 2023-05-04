@@ -1,17 +1,21 @@
 package com.example.diy4rent.demo.model;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.UUID;
+
+import org.apache.commons.codec.DecoderException;
+import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.codec.binary.Hex;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-import java.util.UUID;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
-import org.apache.commons.codec.DecoderException;
-import org.apache.commons.codec.binary.Base64;
-import org.apache.commons.codec.binary.Hex;
+/*
+ * Autor: Sofía Pita Miguélez
+ */
 
 @Entity
 @Table(name = "herramientas")
@@ -136,5 +140,4 @@ public class Herramientas {
     public void setCharge_info(String charge_info) {
         this.charge_info = charge_info;
     }
-
 }
