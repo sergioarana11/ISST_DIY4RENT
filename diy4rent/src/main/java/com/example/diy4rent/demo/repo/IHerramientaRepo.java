@@ -10,4 +10,6 @@ public interface IHerramientaRepo extends JpaRepository<Herramientas, String> {
 
     List<Herramientas> findByTitleContaining(String title);
 
+    List<Herramientas> findByCategory(String category);
+
 }
