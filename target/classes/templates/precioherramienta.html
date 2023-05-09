@@ -1,0 +1,29 @@
+<body>
+    <h1>Listado de Herramientas</h1>
+
+    <!-- Código de la tabla que muestra la lista de herramientas -->
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Descripcion</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="herramienta : ${herramientas}">
+                <td th:text="${herramienta.getUuid()}"></td>
+                <td th:text="${herramienta.getTitle()}"></td>
+                <td th:text="${herramienta.getDescription()}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Código para filtrar por precio de mayor a menor -->
+    <h2>Filtrar por precio de menor a mayor</h2>
+    <form action="#" method="get">
+        <label for="precio">Precio máximo:</label>
+        <input type="number" id="precio" name="precio" min="0" step="1">
+        <button type="submit">Filtrar</button>
+    </form>
+</body>

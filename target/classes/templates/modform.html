@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Modificar anuncio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery validation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+    <!-- Custom CSS -->
+    <link href="css/styles.css" rel="stylesheet" />
+    <style>
+        body {
+
+            background-color: #f8f9fa;
+
+        }
+
+
+
+
+        .container {
+
+            max-width: 600px;
+
+            margin: 0 auto;
+
+            padding: 40px 20px;
+
+        }
+
+
+
+
+        h1 {
+
+            text-align: center;
+
+            margin-bottom: 30px;
+
+        }
+
+
+
+
+        form {
+
+            background-color: #ffffff;
+
+            padding: 20px;
+
+            border-radius: 5px;
+
+        }
+
+
+
+
+        form label {
+
+            font-weight: bold;
+
+        }
+
+
+
+
+        form input[type="text"],
+
+        form input[type="number"] {
+
+            width: 100%;
+
+            padding: 10px;
+
+            margin-bottom: 20px;
+
+            border: 1px solid #ced4da;
+
+            border-radius: 4px;
+
+        }
+
+
+
+
+        form img {
+
+            max-width: 100%;
+
+            height: auto;
+
+            margin-bottom: 20px;
+
+        }
+
+
+
+
+        form .btn-secondary {
+
+            display: block;
+
+            width: 100%;
+
+            padding: 10px;
+
+            text-align: center;
+
+            background-color: #6c757d;
+
+            border: none;
+
+            border-radius: 4px;
+
+            color: #ffffff;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+        }
+
+
+
+
+        @media (max-width: 576px) {
+
+            form {
+
+                padding: 10px;
+
+            }
+
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1>Detalles de la herramienta</h1>
+    <form method="GET" th:object="${herramienta}">
+
+        <!--     <form method="POST" action="/guardarCambios" th:object="${herramienta}">
+ -->
+        <!--         <img class="card-img-top" th:src="'data:image/jpg;base64,' + ${herramienta.getPhoto()}" alt="Previsualizacion de mi imagen" />
+ -->
+        <!--     <form th:action="@{/guardarCambios}" th:object="${herramienta}" method="post">     -->
+        <!--<form th:action="@{/editar/{herramienta_uuid}(herramienta_uuid=${herramienta.uuid})}" method="get">-->
+        <!--<form th:action="@{/modificar}" th:object="${herramienta}" method="post">-->
+        <!--<input type="hidden" th:field="*{herramienta.uuid}">-->
+        <div>
+            <label for="title">Nombre:</label>
+            <input type="text" id="title" name="title" th:field="*{title}" readonly />
+        </div>
+        <div>
+            <label for="description">Descripción:</label>
+            <input type="text" id="description" name="description" th:field="*{description}" readonly />
+        </div>
+        <div>
+            <label for="price">Precio:</label>
+            <input type="number" id="price" name="price" th:field="*{price}" readonly />
+        </div>
+        <div>
+            <label for="category">Categoría:</label>
+            <input type="text" id="category" name="category" th:field="*{category}" readonly />
+        </div>
+        <div>
+            <label for="location">Ubicación:</label>
+            <input type="text" id="location" name="location" th:field="*{location}" readonly />
+        </div>
+        <div>
+            <label for="charge_info">IBAN:</label>
+            <input type="text" id="charge_info" name="charge_info" th:field="*{charge_info}" readonly />
+        </div>
+        <div>
+            <label for="photo">Foto:</label>
+            <img class="card-img-top" th:src="'data:image/jpg;base64,' + ${herramienta.getPhoto()}"
+                alt="Previsualizacion de mi imagen" style="max-width: 300px; max-height: 200px;" />
+        </div>
+
+
+        <div>
+            <a href="/" class="btn btn-secondary">Volver</a>
+        </div>
+    </form>
+</body>
+
+</html>

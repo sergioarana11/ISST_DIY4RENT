@@ -1,0 +1,53 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Iniciar sesión</title>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            margin-top: 50px;
+        }
+        
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .card {
+            padding: 20px;
+            border: 1px solid #dee2e6;
+            background-color: #fff;
+        }
+        
+        .error {
+            color: red;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h2 class="text-center">Iniciar sesión</h2>
+            <hr>
+            
+            <!-- Mostrar mensaje de error -->
+            <div th:if="${error}" class="error" th:text="${error}"></div>
+            
+            <form id="login-form" th:action="@{/login}" method="post">
+                <div class="form-group">
+                    <label for="email">Correo electrónico:</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Contraseña:</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block" name="loginBtn">Iniciar sesión</button>
+            </form>
+        </div>
+        <a href="/" class="btn btn-secondary">Volver</a>
+    </div>
+    
+</body>
+</html>

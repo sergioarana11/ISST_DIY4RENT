@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>DIY4Rent - [[${category}]]</title>
+    </head>
+    <body>
+        <h1>Herramientas de la categoría: [[${category}]]</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Precio</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="herramienta : ${herramientas}">
+                    <td th:text="${herramienta.title}"></td>
+                    <td th:text="${herramienta.description}"></td>
+                    <td th:text="${herramienta.price}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+    </html>
+    

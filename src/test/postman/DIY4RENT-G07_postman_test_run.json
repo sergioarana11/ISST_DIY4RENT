@@ -1,0 +1,440 @@
+{
+	"id": "f5483509-fd5e-44cd-8077-c712b950c240",
+	"name": "DIY4RENT-G07",
+	"timestamp": "2023-05-09T17:14:12.191Z",
+	"collection_id": "26786253-bd9bdf55-859c-4648-84ca-3056d2809e22",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 0,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2023-05-09T17:14:11.253Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "0e1d84ab-3c30-47e7-9d6b-e9700a4bcc64",
+			"name": "Prueba página principal",
+			"url": "http://localhost:8080",
+			"time": 23,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				23
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "c4d90e57-5a20-463d-a8eb-97de37e0e886",
+			"name": "Obtención vista de formulario de herramienta",
+			"url": "http://localhost:8080/form",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				6
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "346f80ed-21a9-49a1-a9ed-4de53b87eecd",
+			"name": "Obtención vista de formulario de registro",
+			"url": "http://localhost:8080/register",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				7
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "dfd55e69-b965-4f79-97be-8a178171198c",
+			"name": "Obtención vista de formulario de login",
+			"url": "http://localhost:8080/login",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				5
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "0f75adf4-16c6-4875-8673-ede68eb934c7",
+			"name": "Obtención del carrito",
+			"url": "http://localhost:8080/carrito",
+			"time": 18,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				18
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "ccf77c17-93e3-44dc-89cf-5246b2747918",
+			"name": "Agregar herramienta al carrito",
+			"url": "http://localhost:8080/agregar?herramienta_uuid=130b5379-01ec-45dc-a154-29911024a2bc",
+			"time": 16,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				16
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "01d8cdf0-6da8-48b9-a26c-a8b274bb9362",
+			"name": "Volver a agregar herramienta al carrito",
+			"url": "http://localhost:8080/agregar?herramienta_uuid=130b5379-01ec-45dc-a154-29911024a2bc",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				8
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "3e0f2efc-6203-4696-883e-efe5a40df39e",
+			"name": "Añadir herramienta al carrito sin ID",
+			"url": "http://localhost:8080/agregar",
+			"time": 5,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				5
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "aae626ae-f687-4221-9e15-d5408e0b21aa",
+			"name": "Añadir herramienta al carrito con ID incorrecto",
+			"url": "http://localhost:8080/agregar?herramienta_uuid=wfcvwscsw",
+			"time": 6,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				6
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "d0f8f2ed-d8fa-4a98-881e-90b8638af809",
+			"name": "Subir herramienta",
+			"url": "http://localhost:8080/form",
+			"time": 28,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				28
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "b553e772-696c-4082-a9df-f28f1ed3828f",
+			"name": "Subir herramienta precio en otro formato",
+			"url": "http://localhost:8080/form",
+			"time": 13,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				13
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "1ccc88cb-8f4c-480e-8913-281b961f32a0",
+			"name": "Registro de un usuario",
+			"url": "http://localhost:8080/register",
+			"time": 27,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				27
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "f6f4c632-5a5a-4f17-be7e-c0bb7a2fdffa",
+			"name": "Lista de herramientas",
+			"url": "http://localhost:8080/herramientas",
+			"time": 18,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				18
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "32be23ea-1ca2-47c7-9ade-6e10ad65c031",
+			"name": "Prueba de login con usuario registrado",
+			"url": "http://localhost:8080/login",
+			"time": 17,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				17
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "80c0523b-6e0c-46e8-b260-6e3f011d8e38",
+			"name": "Prueba de login con usuario sin estar registrado",
+			"url": "http://localhost:8080/login",
+			"time": 9,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				9
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "61cfc22e-be1b-4cd8-b36f-db09bae509dd",
+			"name": "Buscar por nombre",
+			"url": "http://localhost:8080/buscar?title=Sierra",
+			"time": 11,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				11
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "c37b0860-6ba8-4e62-af61-e72b195a338d",
+			"name": "Buscar por categoría",
+			"url": "http://localhost:8080/category?category=De construcción",
+			"time": 11,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				11
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "ac805d7a-3a7a-45ae-836e-492925f3eb89",
+			"name": "Ordenar por precio de menor a mayor",
+			"url": "http://localhost:8080/precioherramienta",
+			"time": 18,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				18
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "1dfa300a-ae3b-433d-bd2c-5999301366d6",
+			"name": "Ordenar por precio de mayor a menor",
+			"url": "http://localhost:8080/preciodescendente",
+			"time": 43,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				43
+			],
+			"allTests": [
+				{}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 289,
+	"collection": {
+		"requests": [
+			{
+				"id": "0e1d84ab-3c30-47e7-9d6b-e9700a4bcc64",
+				"method": "GET"
+			},
+			{
+				"id": "c4d90e57-5a20-463d-a8eb-97de37e0e886",
+				"method": "GET"
+			},
+			{
+				"id": "346f80ed-21a9-49a1-a9ed-4de53b87eecd",
+				"method": "GET"
+			},
+			{
+				"id": "dfd55e69-b965-4f79-97be-8a178171198c",
+				"method": "GET"
+			},
+			{
+				"id": "0f75adf4-16c6-4875-8673-ede68eb934c7",
+				"method": "GET"
+			},
+			{
+				"id": "ccf77c17-93e3-44dc-89cf-5246b2747918",
+				"method": "POST"
+			},
+			{
+				"id": "01d8cdf0-6da8-48b9-a26c-a8b274bb9362",
+				"method": "POST"
+			},
+			{
+				"id": "3e0f2efc-6203-4696-883e-efe5a40df39e",
+				"method": "POST"
+			},
+			{
+				"id": "aae626ae-f687-4221-9e15-d5408e0b21aa",
+				"method": "POST"
+			},
+			{
+				"id": "d0f8f2ed-d8fa-4a98-881e-90b8638af809",
+				"method": "POST"
+			},
+			{
+				"id": "b553e772-696c-4082-a9df-f28f1ed3828f",
+				"method": "POST"
+			},
+			{
+				"id": "1ccc88cb-8f4c-480e-8913-281b961f32a0",
+				"method": "POST"
+			},
+			{
+				"id": "f6f4c632-5a5a-4f17-be7e-c0bb7a2fdffa",
+				"method": "GET"
+			},
+			{
+				"id": "32be23ea-1ca2-47c7-9ade-6e10ad65c031",
+				"method": "POST"
+			},
+			{
+				"id": "80c0523b-6e0c-46e8-b260-6e3f011d8e38",
+				"method": "POST"
+			},
+			{
+				"id": "61cfc22e-be1b-4cd8-b36f-db09bae509dd",
+				"method": "GET"
+			},
+			{
+				"id": "c37b0860-6ba8-4e62-af61-e72b195a338d",
+				"method": "GET"
+			},
+			{
+				"id": "ac805d7a-3a7a-45ae-836e-492925f3eb89",
+				"method": "GET"
+			},
+			{
+				"id": "1dfa300a-ae3b-433d-bd2c-5999301366d6",
+				"method": "GET"
+			}
+		]
+	}
+}
