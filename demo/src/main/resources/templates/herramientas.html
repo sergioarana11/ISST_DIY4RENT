@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Herramientas</title>
+</head>
+<body>
+    <h1>Listado de Herramientas</h1>
+    <p th:with="formattedUuid=${#strings.replace(uuid, '(\\w{8})(\\w{4})(\\w{4})(\\w{4})(\\w{12})', '$1-$2-$3-$4-$5')}"
+   th:text="${formattedUuid}">Default Text</p>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Descripcion</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="herramienta : ${herramientas}">
+                <td th:text="${herramienta.getUuid()}"></td>
+                <td th:text="${herramienta.getTitle()}"></td>
+                <td th:text="${herramienta.getDescription()}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
