@@ -1,115 +1,155 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>DIY4RENT</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+        <!-- link para el css del footer-->
+        <link rel="stylesheet" type="text/css" href="../resources/static/footer.css">
+    </head>
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand">DIY4Rent</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="form">Publicar Anuncio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="register">Registro</a></li>
+                        <li class="nav-item"><a class="nav-link" href="login">Iniciar Sesión</a></li>
 
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>DIY4RENT</title>
-    <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-    <!-- Bootstrap icons-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/styles.css" rel="stylesheet" />
-    <!-- link para el css del footer-->
-    <link rel="stylesheet" type="text/css" href="../resources/static/footer.css">
-</head>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Filtrar
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="/">Todos los productos</a></li>
+                                <li class="nav-item"><a class="nav-link" href="categoria.html">aa</a></li>
+                                <li class="dropdown-submenu">
+                                    <a class="dropdown-item dropdown-toggle" href="#" id="navbarDropdownCategoria"
+                                        role="button" data-bs-toggle="dropdown" aria-expanded="false"> Categoría
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownCategoria">
+                                        <li><a class="dropdown-item" href="#" onclick="filterByCategory('De golpe')">De Golpe</a></li>
+                                        <li><a class="dropdown-item" href="#" onclick="filterByCategory('Manual')">Manual</a></li>
+                                        <li><a class="dropdown-item" href="#" onclick="filterByCategory('Mecánica')">Mecánica</a></li>
+                                    </ul>
+                    
+ 
+                                <!-- <div id="categoriasCollapse" class="collapse">
+                                    <div class="list-group">
+                                        <a href="#" class="list-group-item list-group-item-action"
+                                            onclick="filterByCategory('De golpe')">De Golpe</a>
+                                        <a href="#" class="list-group-item list-group-item-action"
+                                            onclick="filterByCategory('Manual')">Manual</a>
+                                        <a href="#" class="list-group-item list-group-item-action"
+                                            onclick="filterByCategory('Mecánica')">Mecánica</a>
+                                        <a href="#" class="list-group-item list-group-item-action"
+                                            onclick="filterByCategory('De sujeción')">De sujeción</a>
+                                        <a href="#" class="list-group-item list-group-item-action"
+                                            onclick="filterByCategory('De corte')">De corte</a>
+                                </div>>
 
-<body>
-    <!-- Navigation-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container px-4 px-lg-5">
-            <a class="navbar-brand">DIY4Rent</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="form">Publicar Anuncio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="form">Buscar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="register">Registro</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#!">Iniciar Sesión</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#!">All Products</a></li>
-                            <li>
-                                <hr class="dropdown-divider" />
-                            </li>
-                            <li><a class="dropdown-item" href="#!">Popular Items</a></li>
-                            <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <form class="d-flex">
-                    <button class="btn btn-outline-dark" type="submit">
-                        <i class="bi-cart-fill me-1"></i>
-                        Cart
-                        <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                    </button>
-                </form>
-                <form class="d-flex" action="/buscar" method="GET">
-                    <input class="form-control me-2" type="search"
-                        placeholder="Ingrese el nombre de la herramienta a buscar" aria-label="Search" name="nombre">
-                    <button class="btn btn-outline-success" type="submit">Buscar</button>
-                </form>
 
+ 
+                            <li><a class="dropdown-item" href="precioherramienta.html">Precio</a></li>
+                            <li><a class="dropdown-item" href="#!">Localización</a></li-->
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                        <!-- <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#!">All Products</a></li>
+                                <li><hr class="dropdown-divider" /></li>
+                                <li><a class="dropdown-item" href="#!">Popular Items</a></li>
+                                <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
+                            </ul>
+                        </li> -->
+                    
+                    <form class="d-flex" action="/carrito" method="GET">
+                        <button class="btn btn-outline-dark" type="submit">
+                            <i class="nav-item"></i>
+                            Cart
+                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                        </button>
+                    </form>
+
+                    <form class="d-flex" action="/buscar" method="GET">
+                        <input class="form-control me-2" type="search"
+                            placeholder="Ingrese el nombre de la herramienta a buscar" aria-label="Search" name="title">
+                        <button class="btn btn-outline-success" type="submit">Buscar</button>
+                    </form>
+                </div>
             </div>
-        </div>
-    </nav>
-    <!-- Header-->
-    <header class="bg-dark py-5">
-        <div class="container px-4 px-lg-5 my-5">
-            <div class="text-center text-white">
-                <h1 class="display-4 fw-bolder">DIY4RENT</h1>
-                <p class="lead fw-normal text-white-50 mb-0">Haz que tus herramientas trabajen para ti</p>
+        </nav>
+        <!-- Header-->
+        <header class="bg-dark py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="text-center text-white">
+                    <h1 class="display-4 fw-bolder">DIY4RENT</h1>
+                    <p class="lead fw-normal text-white-50 mb-0">Haz que tus herramientas trabajen para ti</p>
+                    <p class="lead fw-normal text-white-50 mb-0">Bienvenido, <span th:text="${nombreUsuario}">sin identificar</span>!</p>
+                </div>
             </div>
-        </div>
-    </header>
-    <!-- Section-->
-    <section class="py-5">
-        <div class="container px-4 px-lg-5 mt-5">
-            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                <div th:each="herramienta : ${herramientas}" class="col mb-5">
-                    <div class="card h-100">
-                        <!-- Product image-->
-                        <img class="card-img-top" th:src="'data:image/jpg;base64,' + ${herramienta.getPhoto()}"
-                            alt="Product image" />
-                        <!-- <img class="card-img-top" th:src="${herramienta.getPhoto()}" alt="..." /> -->
-                        <!-- Product details-->
-                        <div class="card-body p-4">
-                            <div class="text-center">
-                                <!-- Product name-->
-                                <h5 class="fw-bolder" th:text="${herramienta.getTitle()}">Fancy Product</h5>
-                                <!-- Product price-->
-                                <span th:text="${herramienta.getPrice()} + '€'"></span>
+        </header>
+        <!-- Section-->
+        <section class="py-5">
+            <div class="container px-4 px-lg-5 mt-5">
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                    <div th:each="herramienta : ${herramientas}" class="col mb-5">
+                        <div class="card h-100">
+                            <!-- Product image-->
+                            <img class="card-img-top" th:src="'data:image/jpg;base64,' + ${herramienta.getPhoto()}"  alt="Product image" />
+                             <!-- <img class="card-img-top" th:src="${herramienta.getPhoto()}" alt="..." /> -->
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Product name-->
+                                    <h5 class="fw-bolder" th:text="${herramienta.getTitle()}">Fancy Product</h5>
+                                    <!-- Product price-->
+                                    <span th:text="${herramienta.getPrice()} + '€'"></span>
+                                </div>
                             </div>
-                        </div>
-                        <!-- Product actions-->
-                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a>
+                            <!-- Product actions-->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <form method="post" action="/agregar" class="text-center">
+                                    <input type="hidden" name="herramienta_uuid" th:value="${herramienta.getUuid()}" />
+                                    <button class="btn btn-outline-dark mt-auto" type="submit">Agregar al carrito</button>
+                                </form>
+                                <div class="text-center mt-3">
+                                    <form method="get" th:action="@{/modform/{uuid}(uuid=${herramienta.uuid})}">
+                                        <button type="submit" class="btn btn-primary">Ver detalles</button>
+                                    </form>
+                                </div>
+
                             </div>
                         </div>
                     </div>
+
+                    
+                    
                 </div>
-
-
-
             </div>
-        </div>
-    </section>
-    <!-- Footer-->
-    <footer class="py-5 bg-dark">
-        <div class="container">
-            <p class="m-0 text-center text-white"> DIY4Rent &reg;</p>
-        </div>
-
-
-        <!-- <div class="container">
+        </section>
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container"><p class="m-0 text-center text-white"> DIY4Rent &reg;</p></div>
+        
+              
+            <!-- <div class="container">
                 <div class="row">
                    <div class="col-lg-8 col-md-10 mx-auto">
                         <ul class="list-inline text-center">
@@ -134,13 +174,12 @@
 
                         <p >Contactanos</p>
                     </div> -->
-        <!--</div>
+                <!--</div>
             </div>-->
-    </footer>
-    <!-- Bootstrap core JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Core theme JS-->
-    <script src="js/scripts.js"></script>
-</body>
-
+        </footer> 
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
 </html>

@@ -14,9 +14,12 @@ import java.util.UUID;
 //import org.apache.commons.codec.binary.Base64;
 //import org.apache.commons.codec.binary.Hex;
 
+/*
+ * Autor: Sofía Pita Miguélez
+ */
 
 @Entity
-@Table (name = "usuarios")
+@Table(name = "usuarios")
 public class Usuarios {
     @Id
     private UUID uuid;
@@ -31,14 +34,13 @@ public class Usuarios {
     @Column(name = "apellido1")
     private String apellido1;
     @Column(name = "apellido2")
-    private String apellido2; 
+    private String apellido2;
     @Column(name = "movil")
-    private String movil; 
+    private String movil;
     @Column(name = "location")
     private String location;
     @Column(name = "charge_info")
     private String charge_info;
-
 
     public Usuarios() {
         // empty constructor body
@@ -46,7 +48,7 @@ public class Usuarios {
 
     public Usuarios(String email, String dni, String password, String nombre, String apellido1,
             String apellido2, String movil, String location, String charge_info) {
-        this.uuid =  UUID.randomUUID();
+        this.uuid = UUID.randomUUID();
         this.email = email;
         this.dni = dni;
         this.password = password;
@@ -60,11 +62,11 @@ public class Usuarios {
 
     public UUID getUuid() {
         return uuid;
-     }
-  
-     public void setUuid(UUID uuid) {
+    }
+
+    public void setUuid(UUID uuid) {
         this.uuid = uuid;
-     }
+    }
 
     public String getEmail() {
         return email;
@@ -137,8 +139,5 @@ public class Usuarios {
     public void setCharge_info(String charge_info) {
         this.charge_info = charge_info;
     }
-    
-
 
 }
-

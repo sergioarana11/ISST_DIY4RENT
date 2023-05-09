@@ -10823,4 +10823,20 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
+
+  /* Definicion de estilos para los botones de una herramienta */
+  .btn-custom {
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #111;
+    border-radius: 0;
+    padding: 0.375rem 0.75rem;
+}
+
+.btn-custom:hover {
+    background-color: #f8f9fa;
+    color: #000;
+}
+
+
 }

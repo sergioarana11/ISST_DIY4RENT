@@ -8,6 +8,10 @@ import com.example.diy4rent.demo.model.Herramientas;
 
 public interface IHerramientaRepo extends JpaRepository<Herramientas, String> {
 
+    Herramientas findByUuid(String uuid);
+
+    List<Herramientas> findByCategory(String category);
+
     List<Herramientas> findByTitleContaining(String title);
 
     List<Herramientas> findByCategory(String category);
