@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -47,10 +49,15 @@ public class controller {
     private HerramientaService herramientaService;
 
     @GetMapping(value = "/")
-    public ModelAndView getIndex() {
+    public ModelAndView getIndex(HttpSession session) {
         ModelAndView modelAndView = new ModelAndView("index.html");
         List<Herramientas> herramientas = repo.findAll();
         modelAndView.addObject("herramientas", herramientas);
+
+        // Agrega el nombre de usuario a la vista
+        Usuarios usuario = (Usuarios) session.getAttribute("usuario");
+        String nombreUsuario = (usuario != null) ? usuario.getNombre() : "sin identificar";
+        modelAndView.addObject("nombreUsuario", nombreUsuario);
         return modelAndView;
     }
 
@@ -92,7 +99,7 @@ public class controller {
         return modelAndView;
     }
 
-    // Este es el del sprint2
+    // SPRINT 2 Definicion @PostMapping(value = "/form")
 
     /*
      * @PostMapping(value = "/form")
@@ -164,7 +171,8 @@ public class controller {
     // ESTE ES DEL SPRINT 3
 
     @GetMapping("/preview")
-    public ModelAndView mostrarPrevisualizacion(@ModelAttribute Herramientas herramienta) {
+    // he añadido lo que está en paréntesis en modelAttribute, si da error, lo quito
+    public ModelAndView mostrarPrevisualizacion(@ModelAttribute("herramienta") Herramientas herramienta) {
         // mostrar los datos de la herramienta en la página
         ModelAndView modelAndView = new ModelAndView("preview");
         modelAndView.addObject("herramienta", herramienta);
@@ -185,22 +193,71 @@ public class controller {
     }
 
     // PROBANDO ESTAS NUEVAS RUTAS
-    @GetMapping("/herramienta/{uuid}/editar")
-    public ModelAndView mostrarFormularioEdicion(@PathVariable("uuid") String herramienta_uuid) {
-        // Obtener la herramienta correspondiente al ID proporcionado
+    @GetMapping("/editar/{herramienta_uuid}")
+    public ModelAndView mostrarFormularioEdicion(@PathVariable("herramienta_uuid") String herramienta_uuid) {
+        // Obtener la herramienta correspondiente al UUID proporcionado
         Herramientas herramienta = repo.findByUuid(herramienta_uuid);
         if (herramienta == null) {
-            throw new IllegalArgumentException("Herramienta no encontrada con UUID" + herramienta_uuid);
+            throw new IllegalArgumentException("Herramienta no encontrada con UUID " + herramienta_uuid);
         }
-        // .orElseThrow(() -> new IllegalArgumentException("Herramienta no encontrada
-        // con ID: " + uuid));
         ModelAndView modelAndView = new ModelAndView("modform");
-        // Agregar la herramienta al modelo
         modelAndView.addObject("herramienta", herramienta);
-
-        // Mostrar el formulario de edición
         return modelAndView;
     }
+
+    /*
+     * @PostMapping("/guardarCambios")
+     * public ModelAndView guardarCambios(@ModelAttribute("herramienta")
+     * Herramientas herramienta) {
+     * // Guardar los cambios en la herramienta
+     * repo.save(herramienta);
+     * 
+     * // Redirigir a la vista previa (preview.html)
+     * ModelAndView modelAndView = new ModelAndView("redirect:/preview");
+     * modelAndView.addObject("herramienta", herramienta);
+     * return modelAndView;
+     * }
+     */
+    @RequestMapping(value = "/guardarCambios", method = RequestMethod.POST)
+
+    /* @PostMapping("/guardarCambios") */
+    public ModelAndView guardarCambios(@ModelAttribute("herramienta") Herramientas herramienta) {
+        // Si la herramienta no tiene ID asignado, generamos uno nuevo
+        /*
+         * if (herramienta.getUuid() == null) {
+         * herramienta.setUuid(UUID.randomUUID().toString());
+         * }
+         */
+
+        // Guardar los cambios en la herramienta
+        repo.save(herramienta);
+
+        // Redirigir a la vista previa (preview.html)
+        ModelAndView modelAndView = new ModelAndView("redirect:/reg_correcto");
+        /* modelAndView.addObject("herramienta", herramienta); */
+        return modelAndView;
+    }
+
+    /*
+     * @GetMapping("/editar/{uuid}")
+     * public ModelAndView mostrarFormularioEdicion(@PathVariable("uuid") String
+     * herramienta_uuid) {
+     * // Obtener la herramienta correspondiente al ID proporcionado
+     * Herramientas herramienta = repo.findByUuid(herramienta_uuid);
+     * if (herramienta == null) {
+     * throw new IllegalArgumentException("Herramienta no encontrada con UUID" +
+     * herramienta_uuid);
+     * }
+     * // .orElseThrow(() -> new IllegalArgumentException("Herramienta no encontrada
+     * // con ID: " + uuid));
+     * ModelAndView modelAndView = new ModelAndView("modform");
+     * // Agregar la herramienta al modelo
+     * modelAndView.addObject("herramienta", herramienta);
+     * 
+     * // Mostrar el formulario de edición
+     * return modelAndView;
+     * }
+     */
 
     @GetMapping("/modform/{uuid}")
     public ModelAndView mostrarFormularioModificacion(@PathVariable("uuid") String uuid) {

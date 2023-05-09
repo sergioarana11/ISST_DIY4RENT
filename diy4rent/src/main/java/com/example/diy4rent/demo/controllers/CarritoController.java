@@ -7,6 +7,8 @@ import com.example.diy4rent.demo.repo.ICarritoRepo;
 import com.example.diy4rent.demo.repo.IHerramientaRepo;
 import com.example.diy4rent.demo.repo.IUsuarioRepo;
 
+import jakarta.servlet.http.HttpSession;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -38,15 +40,18 @@ public class CarritoController {
     @Autowired
     private ICarritoRepo carritoRepo;
     @Autowired
-    private IUsuarioRepo UsuarioRepo;
+    private IUsuarioRepo repoUsuarios;
     @Autowired
     private IHerramientaRepo herramientaRepo;
 
     @PostMapping("/agregar")
     public ResponseEntity<String> agregarAlCarrito(@RequestParam("herramienta_uuid") String herramienta_uuid) {
+        // @RequestParam("usuario_uuid") UUID usuario_uuid
+
         System.out.println("Método agregarAlCarrito llamado con herramienta_uuid: " +
                 herramienta_uuid);
         Herramientas herramienta = herramientaRepo.findByUuid(herramienta_uuid);
+        // Usuarios usuario = repoUsuarios.findByUuid(usuario_uuid);
         if (herramienta == null) {
             return ResponseEntity.badRequest().build();
         }
@@ -59,8 +64,8 @@ public class CarritoController {
             String respuestaHtml = mensaje + "<br>" + botonHtml;
             return ResponseEntity.ok().body(respuestaHtml);
         }
-
         carrito = new Carrito(herramienta);
+        // carrito = new Carrito(herramienta, usuario);
         System.out.println("Carrito creado: " + carrito);
         carritoRepo.save(carrito);
         System.out.println("Carrito guardado: " + carrito);
@@ -82,6 +87,25 @@ public class CarritoController {
         // System.out.println(herramientas.get(0).getUuid());
         modelAndView.addObject("carritos", carritos);
         return modelAndView;
+    }
+
+    @GetMapping("/login")
+    public ModelAndView getLogin() {
+        ModelAndView modelAndView = new ModelAndView("login.html");
+        return modelAndView;
+    }
+
+    @PostMapping("/login")
+    public ModelAndView login(@RequestParam String email, @RequestParam String password, HttpSession session) {
+        Usuarios usuario = repoUsuarios.findByEmailAndPassword(email, password);
+        if (usuario != null) {
+            session.setAttribute("usuario", usuario);
+            return new ModelAndView("redirect:/");
+        } else {
+            ModelAndView modelAndView = new ModelAndView("login.html");
+            modelAndView.addObject("error", "Correo electrónico o contraseña incorrectos");
+            return modelAndView;
+        }
     }
 
 }

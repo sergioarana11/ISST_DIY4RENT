@@ -31,35 +31,49 @@
 </head>
 
 <body>
-    <h1>Modificar Herramienta</h1>
-    <form th:action="@{/modificar}" th:object="${herramienta}" method="post">
-        <!--<input type="hidden" th:field="*{herramienta.uuid}" />-->
+    <h1>Detalles de la herramienta</h1>
+    <form method="GET"  th:object="${herramienta}">
+
+<!--     <form method="POST" action="/guardarCambios" th:object="${herramienta}">
+ -->
+<!--         <img class="card-img-top" th:src="'data:image/jpg;base64,' + ${herramienta.getPhoto()}" alt="Previsualizacion de mi imagen" />
+ -->
+<!--     <form th:action="@{/guardarCambios}" th:object="${herramienta}" method="post">     -->
+        <!--<form th:action="@{/editar/{herramienta_uuid}(herramienta_uuid=${herramienta.uuid})}" method="get">-->
+        <!--<form th:action="@{/modificar}" th:object="${herramienta}" method="post">-->
+        <!--<input type="hidden" th:field="*{herramienta.uuid}">-->
         <div>
             <label for="title">Nombre:</label>
-            <input type="text" id="title" name="title" th:field="*{herramienta.title}" />
+            <input type="text" id="title" name="title" th:field="*{title}" readonly />
         </div>
         <div>
             <label for="description">Descripción:</label>
-            <input type="text" id="description" name="description" th:field="*{herramienta.description}" required />
+            <input type="text" id="description" name="description" th:field="*{description}" readonly />
         </div>
         <div>
             <label for="price">Precio:</label>
-            <input type="number"  id="price" name="price" th:field="*{herramienta.price}" />
+            <input type="number" id="price" name="price" th:field="*{price}" readonly />
         </div>
         <div>
             <label for="category">Categoría:</label>
-            <input type="text" id="category" name="category" th:field="*{herramienta.category}" />
+            <input type="text" id="category" name="category" th:field="*{category}" readonly/>
         </div>
         <div>
             <label for="location">Ubicación:</label>
-            <input type="text" id="location" name="location" th:field="*{herramienta.location}" />
+            <input type="text" id="location" name="location" th:field="*{location}" readonly/>
         </div>
         <div>
             <label for="charge_info">IBAN:</label>
-            <input type="text" id="charge_info" name="charge_info" th:field="*{herramienta.charge_info}" />
+            <input type="text" id="charge_info" name="charge_info" th:field="*{charge_info}" readonly/>
         </div>
         <div>
-            <button type="submit">Guardar cambios</button>
+            <label for="photo">Foto:</label>
+            <img class="card-img-top" th:src="'data:image/jpg;base64,' + ${herramienta.getPhoto()}" alt="Previsualizacion de mi imagen" style="max-width: 300px; max-height: 200px;" />
+        </div>
+        
+
+        <div>
+            <a href="/" class="btn btn-secondary">Volver</a>
         </div>
     </form>
 </body>
