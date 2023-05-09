@@ -1,0 +1,167 @@
+<!-- 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Filtrado de herramientas</title>
+</head>
+<body>
+  <h1>Filtrado de herramientas</h1>
+  <form method="get" action="/filtradoherramienta">
+    <label for="category">Categoría:</label>
+    <div class="dropdown-menu-container d-flex justify-content-between">
+        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Categoría
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            
+            <li><a class="dropdown-item" href="#" onclick="filterByCategory('De golpe')">De Golpe</a></li>
+            <li><a class="dropdown-item" href="#" onclick="filterByCategory('Manual')">Manual</a></li>
+            <li><a class="dropdown-item" href="#" onclick="filterByCategory('Mecánica')">Mecánica</a></li>
+
+
+
+            <a class="dropdown-item" onclick="document.getElementById('category').value='Manual'; document.getElementById('category').placeholder='Manual';">Manual</a>
+            <a class="dropdown-item" onclick="document.getElementById('category').value='Mecánica'; document.getElementById('category').placeholder='Mecánica';">Mecánica</a>
+            <a class="dropdown-item" onclick="document.getElementById('category').value='De sujeción'; document.getElementById('category').placeholder='De sujeción';">De sujeción</a>
+            <a class="dropdown-item" onclick="document.getElementById('category').value='De golpe'; document.getElementById('category').placeholder='De golpe';">De golpe</a>
+            <a class="dropdown-item" onclick="document.getElementById('category').value='De corte'; document.getElementById('category').placeholder='De corte';">De corte</a>
+        </div>
+        <input readonly type="text" class="form-control form-control-lg" placeholder="Categoría..." id="category" name="category" required/>
+    </div>
+    <br><br>
+    <label for="price">Precio máximo:</label>
+    <input type="number" name="price" id="price">
+    <br><br>
+    <button type="submit">Filtrar</button>
+  </form>
+  <br><br>
+  <table>
+    <thead>
+      <tr>
+        <th>Título</th>
+        <th>Descripción</th>
+        <th>Categoría</th>
+        <th>Precio</th>
+      </tr>
+    </thead>
+    <tbody>
+      <c:forEach var="herramienta" items="${herramientas}">
+        <c:if test="${filtro == null or herramienta.title.toLowerCase().contains(filtro.toLowerCase())}">
+          <c:if test="${categoria == null or categoria == '' or herramienta.category == categoria}">
+            <c:if test="${precio == null or herramienta.price <= precio}">
+              <tr>
+                <td>${herramienta.title}</td>
+                <td>${herramienta.description}</td>
+                <td>${herramienta.category}</td>
+                <td>${herramienta.price}</td>
+              </tr>
+            </c:if>
+          </c:if>
+        </c:if>
+      </c:forEach>
+    </tbody>
+  </table>
+</body>
+</html>
+*/-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Filtrando Herramientas por categorias</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+    <div class="wrap">
+        <h1>Escoge un producto</h1>
+        <div class="store-wrapper">
+            <div class="category_list">
+                <a href="#" class="category_item" category="all">Todo</a>
+                <a href="#" class="category_item" category="manual">Manual</a>
+                <a href="#" class="category_item" category="mecánica">Mecánica</a>
+                <a href="#" class="category_item" category="desujecion">De sujeción</a>
+                <a href="#" class="category_item" category="degolpe">De golpe</a>
+                <a href="#" class="category_item" category="decorte">De corte</a>
+            </div>
+            <section class="herramientas">
+                <h1>Resultados de la búsqueda</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Descripción</th>
+                            <th>Precio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="herramienta : ${herramientas}">
+                            <td th:text="${herramienta.nombre}"></td>
+                            <td th:text="${herramienta.descripcion}"></td>
+                            <td th:text="${herramienta.precio}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha384-/+964LkqQlvIuRoNVaOLM7TPwpgUrNFYj2+M0GkoRV7DB+QB9458V7h1aWrwzIv"
+        crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+
+            // Change active class on category items
+            $('.category_item').click(function () {
+                $('.category_item').removeClass('active_category');
+                $(this).addClass('active_category');
+
+                var category = $(this).attr('category');
+                console.log("Selected category: " + category);
+
+                $.ajax({
+                    type: 'GET',
+                    url: '/filtradoherramientas',
+                    data: {
+                        category: category
+                    },
+                    success: function (data) {
+                        $('.herramientas tbody').html(data);
+                    },
+                    error: function () {
+                        console.log('Error al cargar las herramientas');
+                    }
+                });
+            });
+
+            // Get all tools
+            $('.category_item[category="all"]').click(function () {
+                $.ajax({
+                    type: 'GET',
+                    url: '/filtradoherramientas',
+                    data: {
+                        category: ''
+                    },
+                    success: function (data) {
+                        $('.herramientas tbody').html(data);
+                    },
+                    error: function () {
+                        console.log('Error al cargar todas las herramientas');
+                    }
+                });
+            });})
+            </script>
+    
+</body>
+
+</html>
